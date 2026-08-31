@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turno Extra — quatro semanas de IA para quem trabalha com finanças</title>
+<meta name="description" content="Programa ao vivo de 4 semanas para analistas, associates e sócios de boutiques de M&A, crédito e gestoras. Turma de 12 pessoas, São Paulo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#0B0E10; --surface:#12171A; --surface-2:#192024; --line:#242D32;
+  --ink:#ECEFEE; --muted:#8D979C; --brass:#D3A855; --brass-deep:#A2792D;
+  --brass-soft:rgba(211,168,85,.10); --teal:#5FAEA6;
+  --maxw:940px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16.5px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+h1,h2,h3.serif{font-family:"Newsreader",Georgia,serif;font-weight:400;letter-spacing:-.02em;text-wrap:balance}
+a{color:var(--brass)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+
+/* ---------- CTA ---------- */
+.cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--brass);color:#0B0E10;text-decoration:none;
+  font-weight:600;font-size:16px;padding:15px 26px;border-radius:3px;
+  border:none;cursor:pointer;font-family:inherit;
+  transition:background .18s ease, transform .18s ease;
+}
+.cta:hover{background:#E4BC6E;transform:translateY(-1px)}
+.cta svg{width:19px;height:19px;flex:none;fill:currentColor}
+.cta-ghost{
+  display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);
+  color:var(--ink);text-decoration:none;padding:14px 22px;border-radius:3px;font-size:15px;
+  cursor:pointer;font-family:inherit;transition:border-color .18s ease;
+}
+.cta-ghost:hover{border-color:var(--brass)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:30px}
+.cta-note{font-size:13.5px;color:var(--muted);margin:14px 0 0}
+
+/* ---------- hero ---------- */
+.hero{padding:70px 0 60px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;top:-220px;right:-160px;width:520px;height:520px;
+  background:radial-gradient(circle,rgba(211,168,85,.13),transparent 68%);pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:1}
+.hero .kicker{color:var(--brass);margin:0 0 22px}
+.hero h1{font-size:clamp(54px,12vw,104px);line-height:.93;margin:0 0 20px}
+.hero .lead{
+  font-family:"Newsreader",Georgia,serif;font-weight:300;font-size:clamp(22px,3.6vw,30px);
+  line-height:1.32;margin:0 0 20px;max-width:22ch;
+}
+.hero .lead em{font-style:italic;color:var(--brass)}
+.hero .who{color:var(--muted);max-width:56ch;margin:0;font-size:16px}
+
+.factbar{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.factbar div{padding:18px 20px 20px 0;border-right:1px solid var(--line)}
+.factbar div:last-child{border-right:none}
+@media(max-width:620px){
+  .factbar{grid-template-columns:1fr 1fr}
+  .factbar div{border-bottom:1px solid var(--line);padding-right:16px}
+  .factbar div:nth-child(2n){border-right:none}
+}
+.factbar dt{color:var(--muted);margin:0 0 5px}
+.factbar dd{margin:0;font-size:15.5px;font-weight:500;line-height:1.35}
+
+/* ---------- sections ---------- */
+section{padding:66px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(30px,5vw,42px);line-height:1.08;margin:0 0 14px}
+.sec-kicker{color:var(--brass);margin:0 0 16px}
+.lede{color:var(--muted);max-width:62ch;margin:0 0 34px;font-size:16.5px}
+p{margin:0 0 16px}
+.prose{max-width:62ch}
+.prose strong{color:var(--ink);font-weight:600}
+
+/* proof */
+.proof{padding:26px 0;border-bottom:1px solid var(--line);background:var(--surface)}
+.proof p{margin:0;color:var(--muted);font-size:15px;text-align:center}
+.proof b{color:var(--ink);font-weight:500}
+
+/* weeks */
+.weeks{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.wk{background:var(--surface);padding:26px 28px;display:grid;grid-template-columns:64px 1fr;gap:22px}
+@media(max-width:600px){.wk{grid-template-columns:1fr;gap:10px;padding:22px}}
+.wk .n{font-family:"Newsreader",serif;font-size:40px;line-height:.9;color:var(--brass)}
+.wk h3{margin:0 0 10px;font-size:20px;font-weight:600;letter-spacing:-.01em}
+.wk p{margin:0 0 12px;color:var(--muted);font-size:15.5px}
+.wk .out{
+  font-size:14.5px;background:var(--brass-soft);border-radius:3px;padding:11px 14px;color:var(--ink);line-height:1.5;
+}
+.wk .out b{display:block;color:var(--brass);font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:4px}
+
+/* keeps */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.grid3 div{background:var(--surface);padding:20px 22px}
+.grid3 h4{margin:0 0 6px;font-size:15.5px;font-weight:600}
+.grid3 p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.5}
+
+/* fit / not fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:640px){.fit{grid-template-columns:1fr;gap:20px}}
+.fit ul{list-style:none;margin:0;padding:0}
+.fit li{padding:10px 0 10px 28px;position:relative;border-bottom:1px solid var(--line);font-size:15.5px}
+.fit h3{margin:0 0 8px;font-size:13px;font-family:"IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;font-weight:500}
+.fit .yes h3{color:var(--teal)}
+.fit .no h3{color:var(--muted)}
+.fit .yes li::before{content:"→";position:absolute;left:2px;color:var(--teal)}
+.fit .no li::before{content:"×";position:absolute;left:4px;color:var(--muted)}
+.fit .no li{color:var(--muted)}
+
+/* calculator */
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:30px 32px}
+@media(max-width:600px){.calc{padding:24px 20px}}
+.calc .field{margin-bottom:24px}
+.calc label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;font-size:15px}
+.calc label span.val{font-family:"IBM Plex Mono",monospace;color:var(--brass);font-variant-numeric:tabular-nums;font-size:15px}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:3px;background:var(--line);border-radius:2px;outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--brass);cursor:pointer;border:3px solid var(--bg);
+}
+input[type=range]::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;background:var(--brass);cursor:pointer;border:3px solid var(--bg);
+}
+.calc-out{border-top:1px solid var(--line);padding-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:520px){.calc-out{grid-template-columns:1fr}}
+.calc-out .k{color:var(--muted);margin:0 0 6px}
+.calc-out .v{font-family:"Newsreader",serif;font-size:34px;line-height:1;color:var(--brass);font-variant-numeric:tabular-nums;margin:0}
+.calc-out .v small{font-family:"IBM Plex Sans",sans-serif;font-size:14px;color:var(--muted);display:block;margin-top:8px;line-height:1.45}
+.calc-note{font-size:13px;color:var(--muted);margin:20px 0 0;line-height:1.5}
+
+/* price */
+.lotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-bottom:26px}
+.lote{background:var(--surface);padding:24px 24px 26px;position:relative}
+.lote.active{background:var(--surface-2);box-shadow:inset 0 2px 0 var(--brass)}
+.lote .tag{color:var(--muted);margin:0 0 12px}
+.lote.active .tag{color:var(--brass)}
+.lote .price{font-family:"Newsreader",serif;font-size:40px;line-height:1;margin:0 0 8px;font-variant-numeric:tabular-nums}
+.lote .price s{color:var(--muted);font-size:20px;margin-right:8px}
+.lote .cond{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:8px}
+.pay div{border-top:1px solid var(--line);padding-top:14px}
+.pay h4{margin:0 0 5px;font-size:15px;font-weight:600}
+.pay p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.5}
+
+/* faq */
+details{border-bottom:1px solid var(--line)}
+details summary{
+  cursor:pointer;padding:17px 34px 17px 0;font-size:16.5px;font-weight:500;
+  list-style:none;position:relative;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{
+  content:"+";position:absolute;right:6px;top:15px;color:var(--brass);font-size:20px;line-height:1.4;
+  transition:transform .2s ease;
+}
+details[open] summary::after{content:"–"}
+details .a{padding:0 0 20px;color:var(--muted);max-width:62ch;font-size:15.5px}
+details .a p:last-child{margin-bottom:0}
+
+/* closer */
+.closer{padding:80px 0;text-align:center;border-bottom:none}
+.closer h2{margin:0 auto 16px;max-width:18ch}
+.closer p{color:var(--muted);max-width:52ch;margin:0 auto}
+.closer .cta-row{justify-content:center}
+.seats{
+  display:inline-flex;align-items:center;gap:9px;margin-bottom:26px;
+  border:1px solid var(--line);border-radius:999px;padding:7px 16px;color:var(--muted);
+}
+.seats i{width:7px;height:7px;border-radius:50%;background:var(--teal);display:inline-block;font-style:normal}
+
+footer{padding:34px 0 60px;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     CONFIGURAÇÃO — edite as 6 linhas do <script> no fim do arquivo:
+     seu WhatsApp, nome da turma, datas, vagas e preço do lote atual.
+     ================================================================ -->
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker mono">Turma de 12 · ao vivo · São Paulo</p>
+    <h1>Turno Extra</h1>
+    <p class="lead">Quatro semanas para você entregar como se tivesse <em>o dobro do tempo</em>.</p>
+    <p class="who">Programa ao vivo para analistas, associates e sócios de boutiques de M&amp;A, crédito estruturado, special situations, gestoras e family offices. Não é aula de teoria: você traz o trabalho da semana e sai dela com o trabalho feito.</p>
+    <div class="cta-row">
+      <button class="cta" data-msg="vaga">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.4 1.9.8 2.6.9 3.5.7.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Quero uma vaga
+      </button>
+      <button class="cta-ghost" data-msg="duvida">Tenho uma dúvida antes</button>
+    </div>
+    <p class="cta-note">Abre uma conversa no WhatsApp. Sem formulário, sem lista de e-mail.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <dl class="factbar">
+    <div><dt class="mono">Duração</dt><dd>4 encontros semanais<br>2 horas cada</dd></div>
+    <div><dt class="mono">Formato</dt><dd>Ao vivo, com câmera<br>gravado para a turma</dd></div>
+    <div><dt class="mono">Turma</dt><dd>12 pessoas<br>no máximo</dd></div>
+    <div><dt class="mono">Próxima</dt><dd data-turma>—</dd></div>
+  </dl>
+</div>
+
+<div class="proof">
+  <div class="wrap"><p>Formato testado com sócios da <b>BM Partners</b> e da <b>TESS Capital</b>.</p></div>
+</div>
+
+<section>
+  <div class="wrap prose">
+    <p class="sec-kicker mono">O problema</p>
+    <h2>Não é trabalho difícil. É trabalho longo.</h2>
+    <p>Você já saiu às onze da noite por causa de um teaser que mudou de escopo às seis. Já leu um data room inteiro atrás de três linhas. Já refez um memorando porque o padrão da casa não bateu. Já perdeu uma sexta montando lista de alvos.</p>
+    <p>Nada disso exige o seu julgamento — que é a única coisa pela qual você é realmente pago. É exatamente o tipo de trabalho que a máquina faz bem, <strong>se você souber pedir</strong>.</p>
+    <p>E se você já abriu o ChatGPT e achou o resultado genérico: você está certo, ele é. A distância entre resposta genérica e entregável que passa no crivo do sócio é método — contexto, papel, formato, crítica e iteração. São essas quatro semanas.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-kicker mono">O programa</p>
+    <h2>Quatro semanas, quatro entregas suas</h2>
+    <p class="lede">Todo encontro tem uma parte ao vivo e uma tarefa aplicada no seu trabalho real, não em caso fictício. Você não sai com anotações — sai com coisa pronta.</p>
+
+    <div class="weeks">
+      <div class="wk">
+        <span class="n">01</span>
+        <div>
+          <h3>Terreno: sigilo e método</h3>
+          <p>O que pode e o que não pode entrar — material de cliente, data room, dado pessoal — com regra escrita, não com instinto. Depois, o método de trabalho que separa resposta genérica de entregável: contexto, papel, formato, crítica, iteração.</p>
+          <div class="out"><b>Você sai com</b>Sua política de uso em uma página, pronta para mostrar ao sócio · O mapa das suas horas: onde a sua semana vai embora, em reais</div>
+        </div>
+      </div>
+      <div class="wk">
+        <span class="n">02</span>
+        <div>
+          <h3>Peso: documento, análise, entregável</h3>
+          <p>Documento longo lido de verdade: contrato, balanço, edital, pasta de data room. Extração estruturada, red flags, sumário executivo. Teaser e memorando a partir de material bruto, no padrão e no tom da sua casa.</p>
+          <div class="out"><b>Você sai com</b>Um entregável real seu feito ponta a ponta — e o tempo cronometrado, para comparar com o de antes</div>
+        </div>
+      </div>
+      <div class="wk">
+        <span class="n">03</span>
+        <div>
+          <h3>Origem: tese, alvos e relacionamento</h3>
+          <p>Tese setorial montada em uma tarde. Mapa de alvos com gatilho de evento — sucessão, dívida vencendo, mudança de sócio. Pesquisa de contraparte antes da reunião, ata e follow-up depois dela.</p>
+          <div class="out"><b>Você sai com</b>Uma tese escrita e uma lista de 30 alvos com gatilho, pronta para usar na segunda</div>
+        </div>
+      </div>
+      <div class="wk">
+        <span class="n">04</span>
+        <div>
+          <h3>Sistema: sua biblioteca e o controle de qualidade</h3>
+          <p>Como transformar o que funcionou em biblioteca reutilizável, calibrada nos seus templates e no seu vocabulário. Como revisar saída de IA sem refazer o trabalho. E onde vale automatizar de verdade.</p>
+          <div class="out"><b>Você sai com</b>Sua biblioteca pessoal montada · Checklist de qualidade · Plano de 30 dias com o que atacar primeiro</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-kicker mono">O que fica com você</p>
+    <h2>Depois que a turma acaba</h2>
+    <p class="lede">A aula acaba em quatro semanas. Isso aqui não.</p>
+    <div class="grid3">
+      <div><h4>Sua biblioteca</h4><p>Montada por você durante o curso, no padrão da sua casa. É o ativo que continua rendendo sozinho.</p></div>
+      <div><h4>Política de uso</h4><p>Uma página que responde ao sócio o que entra e o que não entra numa IA. Costuma ser o que destrava o uso no time inteiro.</p></div>
+      <div><h4>Gravação das 4 aulas</h4><p>Acesso permanente. Serve para revisar e para mostrar à sua equipe.</p></div>
+      <div><h4>Grupo da turma</h4><p>Doze pessoas do mesmo circuito trocando o que funcionou. Vale o preço sozinho.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-kicker mono">Antes de você decidir</p>
+    <h2>Para quem é, e para quem não é</h2>
+    <div class="fit">
+      <div class="yes">
+        <h3>É para você se</h3>
+        <ul>
+          <li>Você trabalha com M&amp;A, crédito, special situations, gestão ou consultoria financeira</li>
+          <li>Boa parte da sua semana é documento, análise e entregável escrito</li>
+          <li>Você quer método, não uma lista de prompts prontos</li>
+          <li>Você pode abrir o computador durante as duas horas e trabalhar junto</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>Não é para você se</h3>
+        <ul>
+          <li>Você quer aprender a programar ou treinar modelos</li>
+          <li>Você quer um certificado para pendurar no LinkedIn</li>
+          <li>Você espera assistir de forma passiva e aplicar depois</li>
+          <li>Você não pode usar nenhuma ferramenta de IA por política da sua casa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-kicker mono">A conta</p>
+    <h2>Em quanto tempo isso se paga</h2>
+    <p class="lede">Mexa nos dois controles com os seus números. A conta usa 160 horas por mês, que é conservador para quem trabalha em boutique — se você trabalha mais que isso, o retorno é maior do que aparece aqui.</p>
+    <div class="calc">
+      <div class="field">
+        <label for="sal">Sua remuneração mensal aproximada <span class="val" id="salv">R$ 18.000</span></label>
+        <input type="range" id="sal" min="6000" max="60000" step="1000" value="18000">
+      </div>
+      <div class="field">
+        <label for="hrs">Horas por semana que você espera recuperar <span class="val" id="hrsv">4h</span></label>
+        <input type="range" id="hrs" min="1" max="12" step="1" value="4">
+      </div>
+      <div class="calc-out">
+        <div>
+          <p class="k mono">Valor do tempo devolvido</p>
+          <p class="v" id="outMes">R$ 1.949<small>por mês, todo mês</small></p>
+        </div>
+        <div>
+          <p class="k mono">Tempo para se pagar</p>
+          <p class="v" id="outPay">5 semanas<small>depois disso é saldo positivo</small></p>
+        </div>
+      </div>
+      <p class="calc-note">Estimativa para você calibrar a decisão, não promessa de resultado. O que o programa garante é o método e os entregáveis — quanto tempo isso devolve depende de onde você aplica.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-kicker mono">Sigilo</p>
+    <h2>"Eu não posso jogar material de cliente numa IA."</h2>
+    <div class="prose">
+      <p>Correto. E essa é a primeira aula, não um detalhe no fim.</p>
+      <p>Você vai sair da semana 1 com regra escrita: que categoria de informação pode entrar e qual não pode, como anonimizar quando faz falta, o que muda entre conta comum e conta corporativa, o que fica retido e por quanto tempo, e o que responder quando o cliente perguntar.</p>
+      <p><strong>Boa parte do que você vai aprender funciona sem material sensível nenhum</strong> — estrutura, padrão, revisão, pesquisa pública, originação. É justamente aí que está a maior parte das horas perdidas.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-kicker mono">Investimento</p>
+    <h2>Preço por lote</h2>
+    <p class="lede">O preço sobe conforme as vagas saem — quem entra cedo paga menos porque assume mais risco. Doze vagas no total, e elas não são reabertas depois que a turma começa.</p>
+    <div class="lotes">
+      <div class="lote active">
+        <p class="tag mono">Lote 1 · 4 vagas</p>
+        <p class="price">R$ 1.200</p>
+        <p class="cond">Preço de primeira turma. Em troca, peço seu retorno honesto no fim e, se tiver valido, um depoimento.</p>
+      </div>
+      <div class="lote">
+        <p class="tag mono">Lote 2 · 4 vagas</p>
+        <p class="price">R$ 1.600</p>
+        <p class="cond">Preço intermediário, liberado quando o lote 1 fechar.</p>
+      </div>
+      <div class="lote">
+        <p class="tag mono">Lote 3 · 4 vagas</p>
+        <p class="price">R$ 2.000</p>
+        <p class="cond">Preço cheio, que passa a ser o padrão das próximas turmas.</p>
+      </div>
+    </div>
+    <div class="pay">
+      <div><h4>Como pagar</h4><p>PIX à vista, ou cartão em até 6x. Nota fiscal emitida — a maioria das casas reembolsa como treinamento.</p></div>
+      <div><h4>Sua empresa quer mandar o time</h4><p>A partir de 3 pessoas da mesma casa eu faço turma fechada, com o conteúdo calibrado nos documentos de vocês. Me chame no WhatsApp.</p></div>
+      <div><h4>Se não servir</h4><p>Se depois do primeiro encontro você achar que não é para você, devolvo o valor integral. Sem conversa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-kicker mono">Dúvidas</p>
+    <h2>O que costumam perguntar</h2>
+    <details>
+      <summary>Preciso pagar plano de alguma IA?</summary>
+      <div class="a"><p>Não. O programa inteiro foi desenhado para funcionar em plano gratuito. Se você já tem plano pago, mostro o que muda — mas isso é upgrade, não pré-requisito.</p></div>
+    </details>
+    <details>
+      <summary>Não sei nada de IA. Vou ficar para trás?</summary>
+      <div class="a"><p>Não. A turma parte do zero em ferramenta e do avançado em contexto de trabalho — o que se assume é que você conhece o ofício, não o software. Quem já usa IA todo dia costuma descobrir que estava usando como buscador.</p></div>
+    </details>
+    <details>
+      <summary>E se eu perder um encontro?</summary>
+      <div class="a"><p>Todos são gravados e ficam com você. Mas o valor está em trabalhar junto ao vivo, então perder mais de um encontro tira boa parte do sentido.</p></div>
+    </details>
+    <details>
+      <summary>É online ou presencial?</summary>
+      <div class="a"><p>Ao vivo, online, com câmera aberta e você trabalhando junto. Turma de 12 justamente para caber pergunta individual.</p></div>
+    </details>
+    <details>
+      <summary>Minha empresa pode pagar?</summary>
+      <div class="a"><p>Pode, e é o mais comum. Emito nota fiscal como treinamento corporativo. Se precisar de um resumo do programa para mandar ao RH ou ao sócio, me peça no WhatsApp que eu envio pronto.</p></div>
+    </details>
+    <details>
+      <summary>Quem dá a aula?</summary>
+      <div class="a"><p>Aron — construo sistemas e automações para empresas em São Paulo e desenhei os programas de IA aplicada rodados com sócios da BM Partners e da TESS Capital. O curso é sobre o que eu uso trabalhando, não sobre teoria.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="closer">
+  <div class="wrap">
+    <p class="seats mono"><i></i><span data-vagas>—</span></p>
+    <h2>Comece pela conversa</h2>
+    <p>Me manda uma mensagem contando o que você faz e onde a sua semana vai embora. Se eu achar que o curso não resolve o seu caso, eu falo — é mais barato para nós dois.</p>
+    <div class="cta-row">
+      <button class="cta" data-msg="vaga">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.4 1.9.8 2.6.9 3.5.7.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        Quero uma vaga
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>Turno Extra · São Paulo</footer>
+
+<script>
+/* ============================================================
+   EDITE AQUI — é só isto.
+   ============================================================ */
+const WHATSAPP        = "5511900000000";      // seu número: 55 + DDD + número, só dígitos
+const TURMA           = "7 de outubro";        // data de início
+const TURMA_DETALHE   = "4 terças, 19h30";     // dias e horário
+const VAGAS_RESTANTES = 12;                    // atualize conforme fechar
+const PRECO_ATUAL     = 1200;                  // preço do lote aberto agora
+/* ============================================================ */
+
+const MENSAGENS = {
+  vaga:   `Oi Aron! Vi a página do Turno Extra e quero garantir uma vaga na turma de ${TURMA}.`,
+  duvida: `Oi Aron! Vi a página do Turno Extra e fiquei com uma dúvida antes de fechar:`
+};
+
+document.querySelectorAll("[data-msg]").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    const texto = MENSAGENS[btn.dataset.msg] || MENSAGENS.vaga;
+    window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto), "_blank", "noopener");
+  });
+});
+
+document.querySelectorAll("[data-turma]").forEach(function (el) {
+  el.innerHTML = TURMA + "<br>" + TURMA_DETALHE;
+});
+document.querySelectorAll("[data-vagas]").forEach(function (el) {
+  el.textContent = VAGAS_RESTANTES > 0
+    ? VAGAS_RESTANTES + (VAGAS_RESTANTES === 1 ? " vaga aberta" : " vagas abertas") + " para " + TURMA
+    : "Turma de " + TURMA + " lotada — fila de espera aberta";
+});
+
+/* calculadora de retorno */
+const BRL = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+const sal = document.getElementById("sal");
+const hrs = document.getElementById("hrs");
+
+function calcular() {
+  const salario   = Number(sal.value);
+  const horas     = Number(hrs.value);
+  const porHora   = salario / 160;
+  const porMes    = porHora * horas * 4.33;
+  const semanas   = Math.max(1, Math.ceil(PRECO_ATUAL / (porMes / 4.33)));
+
+  document.getElementById("salv").textContent  = BRL.format(salario);
+  document.getElementById("hrsv").textContent  = horas + "h";
+  document.getElementById("outMes").innerHTML  = BRL.format(porMes) + "<small>por mês, todo mês</small>";
+  document.getElementById("outPay").innerHTML  =
+    semanas + (semanas === 1 ? " semana" : " semanas") + "<small>depois disso é saldo positivo</small>";
+}
+sal.addEventListener("input", calcular);
+hrs.addEventListener("input", calcular);
+calcular();
+</script>
+</body>
+</html>
